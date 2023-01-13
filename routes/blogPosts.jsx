@@ -20,8 +20,8 @@ router.post("/addBlog", (req, res) => {
       comment: "",
       date: "",
     },
-    imageIDs: req.body.imageIDs,
-    videoIDs: req.body.videoIDs,
+    imageIDs: req.body.imageIDs ? req.body.imageIDs : [],
+    videoIDs: req.body.videoIDs ? req.body.videoIDs : [],
   };
 
   db.collection("blogPosts")
@@ -74,13 +74,13 @@ router.get("/blogs", (req, res) => {
   db.collection("blogPosts")
     .get()
     .then((snapshot) => {
-      res.status(200).send(snapshot);
+      console.log(snapshot.data())
+      res.status(200).send(snapshot.data());
     })
     .catch((reason) => {
       res.status(500).send(reason);
     });
 });
-
 // POST route to update number of likes of a blog post
 router.post("/updateLikes", (req, res) => {
   const blogRefID = req.body.blogRefID;
