@@ -74,8 +74,11 @@ router.get("/blogs", (req, res) => {
   db.collection("blogPosts")
     .get()
     .then((snapshot) => {
-      console.log(snapshot.data())
-      res.status(200).send(snapshot.data());
+      console.log(snapshot)
+      const tempDoc = snapshot.docs.map((doc) => {
+        return { id: doc.id, ...doc.data() }
+      })
+      res.status(200).send(tempDoc);
     })
     .catch((reason) => {
       res.status(500).send(reason);
