@@ -1,4 +1,4 @@
-const admin = require("./connection/firebase");
+require("./connection/firebase")
 const cors = require("cors");
 const express = require("express");
 require("dotenv").config();
