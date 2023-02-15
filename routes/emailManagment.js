@@ -42,7 +42,7 @@ const sendEmail = (email) => {
 
       Best regards,
 
-      The Jus Askin Team,
+      The Jus Askin Team,`
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
