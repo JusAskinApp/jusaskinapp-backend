@@ -14,6 +14,7 @@ router.post("/addBlog", (req, res) => {
   let blogPost = {
     author: req.body.author,
     content: req.body.content,
+       email:req.body.email,
     date: new Date(Date.now()), //2023-01-11T11:42:13.935Z
     likes: { total: 0, data: [] }, //{date:{},user:{}}
     rating: { rating: 0, data: [] }, //{date:{},user:{}}
